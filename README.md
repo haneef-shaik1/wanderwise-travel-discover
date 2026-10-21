@@ -1,6 +1,6 @@
 # WanderWise — Travel Discovery Website
 
-**Live demo:** [https://haneef-shaik1.github.io/wanderwise-travel-discovery/](https://haneef-shaik1.github.io/wanderwise-travel-discovery/)
+**Live demo:** [https://haneef-shaik1.github.io/wanderwise-travel-discovery/](https://haneef-shaik1.github.io/wanderwise-travel-discover/)
 
 Open the link in any modern browser to see the finished website. No download or setup is needed.
 
