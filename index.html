@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WanderWise — Travel Discovery</title>
+  <meta name="description" content="WanderWise is a scroll-driven travel discovery experience. Explore destinations, build a wishlist and plan your next trip.">
+  <meta name="theme-color" content="#14181a">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><i data-page-progress></i></div>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header" data-header>
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="WanderWise home">
+        <svg class="brand__mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+          <path d="M3 24 L12 10 L18 19 L22 13 L29 24 Z" fill="currentColor"/>
+          <circle cx="24" cy="7" r="3" fill="var(--green-soft)"/>
+        </svg>
+        <span>Wander<em>Wise</em></span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Primary" data-nav>
+        <a href="#discover" data-nav-link>Discover</a>
+        <a href="#destinations" data-nav-link>Destinations</a>
+        <a href="#experiences" data-nav-link>Experiences</a>
+        <a href="#about" data-nav-link>About</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="icon-link" href="#wishlist" aria-label="My travel wishlist">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.5-9.2C1.1 8.5 3 5 6.4 5c2 0 3.8 1.1 5.6 3.2C13.800 6.100 15.600 5 17.600 5 21 5 22.900 8.500 21.500 11.800 19.500 16.400 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span class="badge" data-wishlist-count hidden>0</span>
+        </a>
+        <a class="btn btn--small btn--light header__plan" href="#planner">Plan a trip</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-menu-toggle>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ A. Hero ============ -->
+    <section class="hero" id="home" data-hero aria-labelledby="hero-title">
+      <div class="hero__bg" data-parallax="bg">
+        <img src="assets/images/hero.jpg" alt="Snow-capped mountains above a still alpine lake at golden hour" fetchpriority="high">
+      </div>
+      <div class="hero__mist hero__mist--a" data-parallax="mist" aria-hidden="true"></div>
+      <div class="hero__mist hero__mist--b" data-parallax="mist" aria-hidden="true"></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="container hero__content" data-parallax="content">
+        <p class="eyebrow hero-in" style="--d:.1s">Travel discovery, reimagined</p>
+        <h1 id="hero-title" class="hero__title">
+          <span class="line"><span class="hero-in" style="--d:.25s">The World</span></span>
+          <span class="line"><span class="hero-in" style="--d:.4s">Is Waiting.</span></span>
+        </h1>
+        <p class="hero__lead hero-in" style="--d:.65s">Discover extraordinary places. Create unforgettable journeys.</p>
+        <div class="hero__cta hero-in" style="--d:.85s">
+          <a class="btn btn--primary" href="#destinations">Explore Destinations</a>
+          <a class="btn btn--ghost" href="#discover">Start Your Journey</a>
+        </div>
+      </div>
+
+      <aside class="hero__featured hero-in" style="--d:1.1s" aria-label="Featured destination">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>
+          <small>Featured destination</small>
+          <strong data-featured-label>Loading…</strong>
+        </span>
+      </aside>
+
+      <a class="scroll-cue" href="#discover" aria-label="Scroll to discover destinations">
+        <span class="scroll-cue__mouse" aria-hidden="true"><i></i></span>
+        <span>Scroll</span>
+      </a>
+    </section>
+
+    <!-- ============ B. Immersive showcase ============ -->
+    <section class="showcase" id="discover" aria-labelledby="discover-title">
+      <div class="container showcase__intro" data-reveal>
+        <p class="eyebrow">Discover</p>
+        <h2 id="discover-title" class="section-title">Eight places. One continuous journey.</h2>
+        <p class="section-lead">Keep scrolling and the scene changes around you. Every stop is loaded from the same destination data that powers the gallery below.</p>
+      </div>
+      <div id="showcase-mount" aria-live="polite">
+        <div class="container state-box" data-showcase-loading>
+          <div class="skeleton skeleton--hero"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ C. Explore all ============ -->
+    <section class="section section--light" id="destinations" aria-labelledby="destinations-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow eyebrow--dark">Explore all destinations</p>
+          <h2 id="destinations-title" class="section-title">Find the place that fits your mood.</h2>
+          <p class="section-lead">Search by name, country or highlight, filter by travel style and sort by name or indicative budget.</p>
+        </div>
+
+        <div class="toolbar" data-reveal role="search">
+          <label class="field field--search">
+            <span class="sr-only">Search destinations</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input type="search" id="search-input" placeholder="Search Bali, Japan, temples…" autocomplete="off">
+          </label>
+          <div class="chips" id="category-filters" role="group" aria-label="Filter by category"></div>
+          <label class="field field--select">
+            <span>Sort by</span>
+            <select id="sort-select">
+              <option value="name-asc">Name (A–Z)</option>
+              <option value="name-desc">Name (Z–A)</option>
+              <option value="budget-asc">Budget (low to high)</option>
+              <option value="budget-desc">Budget (high to low)</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
+        <div class="grid" id="destination-grid">
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+        </div>
+        <div class="swipe-ui swipe-ui--light" data-grid-swipe aria-hidden="true">
+          <span class="swipe-ui__hint">Swipe</span>
+          <div class="swipe-ui__dots"></div>
+        </div>
+        <div class="empty" id="empty-state" hidden>
+          <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><circle cx="28" cy="28" r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M41 41l16 16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M21 28h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3>No destinations match your search</h3>
+          <p>Try a different keyword or clear the filters to see everything again.</p>
+          <button class="btn btn--dark" type="button" id="reset-filters">Clear filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ E. Wishlist ============ -->
+    <section class="section section--sand" id="wishlist" aria-labelledby="wishlist-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow eyebrow--dark">Saved on this device</p>
+          <h2 id="wishlist-title" class="section-title">My Travel Wishlist</h2>
+          <p class="section-lead">Tap the heart on any destination to save it. Your list stays in this browser through LocalStorage; no account needed.</p>
+        </div>
+        <div class="wish-grid" id="wishlist-grid"></div>
+        <div class="empty empty--sand" id="wishlist-empty" hidden>
+          <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><path d="M32 54S10 41 6 28C3 18 9 9 18 9c6 0 10 3 14 9 4-6 8-9 14-9 9 0 15 9 12 19-4 13-26 26-26 26z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+          <h3>Your wishlist is waiting for its first stop</h3>
+          <p>Save places you love and they will appear here, ready to drop into your trip plan.</p>
+          <a class="btn btn--dark" href="#destinations">Browse destinations</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ F. Planner ============ -->
+    <section class="section section--dark" id="planner" aria-labelledby="planner-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Plan your trip</p>
+          <h2 id="planner-title" class="section-title">Sketch an itinerary in a minute.</h2>
+          <p class="section-lead">Add destinations, pick a date and see an estimated total. All prices are <strong>indicative estimates</strong> per person (roughly a week, excluding international flights), not live travel prices.</p>
+        </div>
+
+        <div class="planner" data-reveal>
+          <form class="planner__form" id="planner-form" novalidate>
+            <h3>Trip details</h3>
+            <label class="field-block">
+              <span>Destination</span>
+              <select id="plan-destination"></select>
+            </label>
+            <button class="btn btn--primary btn--block" type="button" id="plan-add">Add to itinerary</button>
+
+            <div class="field-row">
+              <label class="field-block">
+                <span>Planned travel date</span>
+                <input type="date" id="plan-date">
+              </label>
+              <label class="field-block">
+                <span>Travelers</span>
+                <input type="number" id="plan-travelers" min="1" max="20" value="2" inputmode="numeric">
+              </label>
+            </div>
+            <label class="field-block">
+              <span>Your total budget (₹, optional)</span>
+              <input type="number" id="plan-budget" min="0" step="1000" placeholder="e.g. 250000" inputmode="numeric">
+            </label>
+            <div class="planner__buttons">
+              <button class="btn btn--light" type="button" id="plan-save">Save itinerary</button>
+              <button class="btn btn--ghost" type="button" id="plan-clear">Clear</button>
+            </div>
+            <p class="fineprint" id="plan-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="planner__result">
+            <h3>Your itinerary</h3>
+            <ul class="itinerary" id="itinerary-list"></ul>
+            <p class="empty-inline" id="itinerary-empty">No destinations yet. Choose one on the left, or use “Add to plan” on any destination card.</p>
+            <div class="summary" id="plan-summary" hidden>
+              <dl>
+                <div><dt>Per person (estimate)</dt><dd id="sum-pp">—</dd></div>
+                <div><dt>Travelers</dt><dd id="sum-travelers">—</dd></div>
+                <div class="summary__total"><dt>Estimated total</dt><dd id="sum-total">—</dd></div>
+                <div><dt>Range</dt><dd id="sum-range">—</dd></div>
+              </dl>
+              <p class="summary__budget" id="sum-budget" hidden></p>
+              <p class="summary__date" id="sum-date" hidden></p>
+            </div>
+            <p class="fineprint">Estimates use the average of each destination's indicative min and max, multiplied by the number of travelers. Real costs vary by season, flights and travel style.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ G. Experiences ============ -->
+    <section class="section section--dark section--experiences" id="experiences" aria-labelledby="experiences-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Experiences</p>
+          <h2 id="experiences-title" class="section-title">Travel is more than a place.</h2>
+          <p class="section-lead">Choose a feeling first, then find the destinations that deliver it.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="exp" data-reveal data-experiences>
+          <article class="exp__item is-active" data-exp>
+            <img src="assets/images/exp-mountain.jpg" alt="A lit tent beneath snow-capped peaks and pine forest at dusk" loading="lazy">
+            <button class="exp__trigger" type="button" aria-expanded="true"><span class="exp__num">01</span><span class="exp__name">Mountain adventures</span></button>
+            <div class="exp__body">
+              <p>High passes, alpine trails and star-filled campsites for the ones who live for the view from the top.</p>
+              <button class="link-btn" type="button" data-category-link="Mountains">Explore mountains →</button>
+            </div>
+          </article>
+          <article class="exp__item" data-exp>
+            <img src="assets/images/exp-beach.jpg" alt="Turquoise water meeting a pale sand beach framed by palm trees" loading="lazy">
+            <button class="exp__trigger" type="button" aria-expanded="false"><span class="exp__num">02</span><span class="exp__name">Tropical beaches</span></button>
+            <div class="exp__body">
+              <p>Warm water, soft sand and long afternoons with nothing on the schedule except the tide.</p>
+              <button class="link-btn" type="button" data-category-link="Beaches">Explore beaches →</button>
+            </div>
+          </article>
+          <article class="exp__item" data-exp>
+            <img src="assets/images/exp-culture.jpg" alt="Glowing lanterns strung between pagodas at twilight" loading="lazy">
+            <button class="exp__trigger" type="button" aria-expanded="false"><span class="exp__num">03</span><span class="exp__name">Cultural exploration</span></button>
+            <div class="exp__body">
+              <p>Temples, festivals and old streets where every corner has a story and every meal has a tradition.</p>
+              <button class="link-btn" type="button" data-category-link="Culture">Explore culture →</button>
+            </div>
+          </article>
+          <article class="exp__item" data-exp>
+            <img src="assets/images/exp-wildlife.jpg" alt="Giraffes and acacia trees silhouetted against a golden savanna sunset" loading="lazy">
+            <button class="exp__trigger" type="button" aria-expanded="false"><span class="exp__num">04</span><span class="exp__name">Wildlife &amp; nature</span></button>
+            <div class="exp__body">
+              <p>Backwaters, forests and sanctuaries that reward patience with unforgettable encounters.</p>
+              <button class="link-btn" type="button" data-category-link="Nature">Explore nature →</button>
+            </div>
+          </article>
+          <article class="exp__item" data-exp>
+            <img src="assets/images/exp-food.jpg" alt="Overhead view of colourful local dishes on a wooden table" loading="lazy">
+            <button class="exp__trigger" type="button" aria-expanded="false"><span class="exp__num">05</span><span class="exp__name">Food &amp; local life</span></button>
+            <div class="exp__body">
+              <p>Market breakfasts, cooking classes and family-run kitchens. Taste a place the way locals do.</p>
+              <button class="link-btn" type="button" data-category-link="Culture">Taste the culture →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="section section--light" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div data-reveal>
+          <p class="eyebrow eyebrow--dark">About WanderWise</p>
+          <h2 id="about-title" class="section-title">A portfolio-grade, framework-free travel product.</h2>
+          <p class="section-lead">WanderWise is a front-end project built with only HTML, CSS and vanilla JavaScript. Destination data lives in one JSON file, favourites and itineraries live in your browser, and nothing is sent anywhere.</p>
+        </div>
+        <ul class="stats" data-reveal>
+          <li><strong data-count="__DEST__" data-count-source="destinations">0</strong><span>Destinations</span></li>
+          <li><strong data-count="__CAT__" data-count-source="categories">0</strong><span>Travel styles</span></li>
+          <li><strong data-count="5">0</strong><span>Experiences</span></li>
+          <li><strong data-count="0">0</strong><span>Accounts needed</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ H. Final CTA ============ -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__bg" data-parallax-simple><img src="assets/images/maldives.jpg" alt="" loading="lazy"></div>
+      <div class="cta__shade" aria-hidden="true"></div>
+      <div class="container cta__inner" data-reveal>
+        <h2 id="cta-title" class="cta__title">Your Next Adventure Starts Here.</h2>
+        <p>Pick a place, save it, plan it. The journey begins with one scroll.</p>
+        <a class="btn btn--primary btn--large" href="#destinations">Explore</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand" href="#home"><span>Wander<em>Wise</em></span></a>
+        <p class="footer__note">A front-end portfolio project built with HTML5, CSS3, vanilla JavaScript and JSON. No frameworks, backend or database.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#wishlist">Wishlist</a></li>
+          <li><a href="#planner">Plan a trip</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Good to know</h3>
+        <ul class="footer__small">
+          <li>All prices are indicative estimates, not live travel prices.</li>
+          <li>Favourites and itineraries are stored locally in your browser.</li>
+          <li>Image details: see <a href="CREDITS.md">CREDITS.md</a>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bar">
+      <span>© <span data-year>2026</span> WanderWise. Portfolio project.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ============ D. Details modal ============ -->
+  <dialog class="modal" id="detail-modal" aria-labelledby="modal-title">
+    <div class="modal__inner" id="modal-content"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <noscript><p class="noscript">WanderWise needs JavaScript enabled to load destinations.</p></noscript>
+  <script>
+    // Browsers block ES modules and fetch() on file:// URLs, so app.js can't run there.
+    // Show a clear message instead of an endless loading state.
+    if (location.protocol === 'file:') {
+      document.addEventListener('DOMContentLoaded', function () {
+        var box = document.createElement('div');
+        box.className = 'file-warning';
+        box.setAttribute('role', 'alert');
+        box.innerHTML = '<strong>WanderWise needs a local web server.</strong> ' +
+          'You opened this page straight from your files, and browsers block loading the destination data that way. ' +
+          'Run <code>python -m http.server 8000</code> in this folder and open <code>http://localhost:8000</code>, ' +
+          'or use VS Code\u2019s Live Server. See README.md for steps.';
+        document.body.insertBefore(box, document.body.firstChild);
+      });
+    }
+  </script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
